@@ -8,6 +8,6 @@ import vercel from "@astrojs/vercel/serverless"
 export default defineConfig({
   site: "https://maax.dev",
   integrations: [react(), tailwind()],
-  output: "server",
+  output: "static",
   adapter: vercel(),
 })

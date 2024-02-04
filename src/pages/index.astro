@@ -1,5 +1,4 @@
 ---
-import Menu from "../components/Menu.astro"
 import Layout from "../layouts/Layout.astro"
 ---
 
@@ -7,15 +6,15 @@ import Layout from "../layouts/Layout.astro"
   title="Maxime Leherquer - Frontend Developer"
   desc="Hi,I'm Maxime Leherquer, a Frontend Developer based in Caen, France."
 >
-  <Menu />
   <main class="px-4 pt-28 xl:px-0 grid grid-y-8">
-    <div class="grid grid-cols-2">
-      <blockquote class="font-bold font-title text-4xl">
+    <div class="grid grid-cols-3">
+      <blockquote class="font-bold font-title text-4xl col-span-2">
         Hi 🤙 ! I'm <span
           class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-500 relative inline-block"
         >
-          <span class="relative text-black">Max,</span>
-        </span> a Frontend Developer based in Caen, France.
+          <span class="relative text-black">Max.</span>
+        </span>
+        <br />I am a Frontend Developer based in Caen, France.
       </blockquote>
       <img src="/icons/landmark-totem-pole-1.svg" alt="" class="w-32 h-32 m-auto" />
     </div>

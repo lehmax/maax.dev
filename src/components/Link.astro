@@ -1,7 +1,7 @@
 ---
 interface Props {
-  title: string
-  classList: string
+  title?: string
+  classList?: string
   link?: string
   icon?: string
 }
@@ -10,6 +10,6 @@ const { classList, title, link, icon } = Astro.props
 ---
 
 <a href={link} class={classList}>
-  {icon !== undefined && <img src={icon} alt="" class="w-5 h-5 mr-2 shrink" />}
-  {title}
+  {icon !== undefined && <img src={icon} alt="" class="w-6 h-6 shrink" />}
+  {title !== undefined && <span class="ml-2">{title}</span>}
 </a>

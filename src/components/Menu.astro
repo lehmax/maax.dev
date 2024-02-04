@@ -9,9 +9,9 @@ const MenuItems = [
 ];
 
 const SecondaryMenuItems = [
-  { title: "", link: "https://github.com/lehmax", icon: "/icons/github-logo.svg" },
-  { title: "", link: "https://www.linkedin.com/in/maxime-leherquer/", icon: "/icons/linkedin-logo.svg" },
-  { title: "", link: "", icon: "/icons/night-moon-new.svg" },
+  { link: "https://github.com/lehmax", icon: "/icons/github-logo.svg" },
+  { link: "https://www.linkedin.com/in/maxime-leherquer/", icon: "/icons/linkedin-logo.svg" },
+  { link: "", icon: "/icons/night-moon-new.svg" },
 ];
 ---
 
@@ -23,7 +23,7 @@ const SecondaryMenuItems = [
   </div>
   <div class="flex gap-x-4">
   {SecondaryMenuItems.map(({title, link, icon}) => (
-    <Link title={title} link={link} icon={icon} classList=""  />
+    <Link title={title} link={link} icon={icon} classList="rounded-full border-yellow-300 bg-yellow-200 border-2  p-2"  />
   ))}
   </div>
 </nav>

@@ -1,0 +1,30 @@
+---
+import Link from "./Link.astro"
+
+const MenuItems = [
+  { title: "Home", link: "/", icon: "/icons/camping-tent-1.svg" },
+  { title: "About", link: "/about", icon: "/icons/landmark-totem-pole-1.svg" },
+  { title: "Blog", link: "/blog", icon: "/icons/quill-write.svg" },
+  { title: "Projects", link: "/projects", icon: "/icons/trees.svg" },
+];
+
+const SecondaryMenuItems = [
+  { title: "", link: "https://github.com/lehmax", icon: "/icons/github-logo.svg" },
+  { title: "", link: "https://www.linkedin.com/in/maxime-leherquer/", icon: "/icons/linkedin-logo.svg" },
+  { title: "", link: "", icon: "/icons/night-moon-new.svg" },
+];
+---
+
+<nav class="flex items-center justify-between">
+  <div class="flex gap-x-4">
+  {MenuItems.map(({title, link, icon}) => (
+    <Link title={title} link={link} icon={icon} classList="flex border-black items-center justify-center overflow-hidden rounded border-2 border-neutral-900 px-4 py-1 [box-shadow:4px_4px_rgb(23_23_23)] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_rgb(82_82_82)]"  />
+  ))}
+  </div>
+  <div class="flex gap-x-4">
+  {SecondaryMenuItems.map(({title, link, icon}) => (
+    <Link title={title} link={link} icon={icon} classList=""  />
+  ))}
+  </div>
+</nav>
+

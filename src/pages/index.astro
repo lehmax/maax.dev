@@ -2,25 +2,22 @@
 import Layout from "../layouts/Layout.astro"
 ---
 
-<Layout
-  title="Maxime Leherquer - Frontend Developer"
-  desc="Hi,I'm Maxime Leherquer, a Frontend Developer based in Caen, France."
->
-  <main class="px-4 pt-28 xl:px-0 grid grid-y-8">
-    <div class="grid grid-cols-3">
-      <blockquote class="font-bold font-title text-4xl col-span-2">
-        Hi 🤙 ! I'm <span
-          class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-500 relative inline-block"
-        >
-          <span class="relative text-black">Max.</span>
-        </span>
-        <br />I am a Frontend Developer based in Caen, France.
-      </blockquote>
-      <img src="/icons/landmark-totem-pole-1.svg" alt="" class="w-32 h-32 m-auto" />
-    </div>
-    <p class="text-xl mt-4">
-      I'm passionate about web development and I love to create beautiful and efficient websites.
-      I'm always looking for new challenges and I'm constantly learning new things.
+<Layout>
+  <div class="grid grid-cols-3">
+    <h1 class="font-bold font-title col-span-2 text-5xl">
+      Hi 🤙 ! I'm <span
+        class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-500 relative inline-block"
+      >
+        <span class="relative text-black">Max.</span>
+      </span>
+    </h1>
+    <p class="font-bold font-title col-span-2 text-3xl mt-4">
+      I am a Frontend Developer based in Caen, France.
     </p>
-  </main>
+    <img src="/icons/landmark-totem-pole-1.svg" alt="" class="w-32 h-32 m-auto" />
+  </div>
+  <p class="text-xl mt-4">
+    I'm passionate about web development and I love to create beautiful and efficient websites. I'm
+    always looking for new challenges and I'm constantly learning new things.
+  </p>
 </Layout>

@@ -4,8 +4,8 @@ import Layout from "./Layout.astro"
 const { frontmatter } = Astro.props
 ---
 
-<Layout title={frontmatter.title} desc="">
-  <h1>{frontmatter.title}</h1>
+<Layout pageTitle={frontmatter.title}>
+  <h1></h1>
   <p>{frontmatter.pubDate.slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
   <p>Écrit par : {frontmatter.author}</p>

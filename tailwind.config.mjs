@@ -92,6 +92,10 @@ export default {
           textDecoration: "underline",
           "text-DecorationThickness": "2px",
         },
+        time: {
+          fontFamily: theme("fontFamily.code"),
+          fontSize: theme("fontSize.sm"),
+        },
       })
     },
   ],

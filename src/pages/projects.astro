@@ -1,7 +1,90 @@
 ---
 import Layout from "../layouts/Layout.astro"
+
+const query = `
+    {
+      viewer {
+        repositories(
+          first: 30
+          ownerAffiliations: OWNER
+          privacy: PUBLIC
+          isLocked: false
+          isArchived: false
+          orderBy: { field: CREATED_AT, direction: DESC }
+        ) {
+          nodes {
+            name
+            description
+            url
+            homepageUrl
+            createdAt
+            repositoryTopics(first: 5) {
+              nodes {
+                topic {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `
+
+const response = await fetch(`https://api.github.com/graphql`, {
+  method: "POST",
+  headers: {
+    Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ query }),
+}).then((response) => response.json())
+
+const projects = response.data.viewer.repositories.nodes?.filter((project: any) => {
+  return project.repositoryTopics.nodes.some((topic: any) => {
+    return topic.topic.name === "learning-by-doing"
+  })
+})
 ---
 
 <Layout pageTitle="Projects">
-  <div></div>
+  <div class="grid lg:grid-cols-2 gap-4">
+    {
+      projects.map((project: any) => (
+        <div class="bg-green-50 border-2 rounded-xl relative border-green-200 pt-2 px-6 pb-20">
+          <div>
+            <time class="text-gray-500">{new Date(project.createdAt).getFullYear()}</time>
+            <h3>
+              <a
+                class="hover:underline hover:underline-offset-2 font-medium text-xl"
+                href={project.url}
+                target="_blank"
+              >
+                {project.name}
+              </a>
+            </h3>
+            <p class="text-gray-600 text-sm mt-3">{project.description}</p>
+          </div>
+          <div class="absolute flex gap-3 bottom-6">
+            <a
+              href={project.url}
+              class="bg-white px-3 py-2 rounded-lg flex items-center gap-1 border"
+              target="_blank"
+            >
+              <span class="text-sm">Source</span>
+              <img src="/icons/redirect.svg" class="w-4 h-4" alt="" />
+            </a>
+            <a
+              href={project.homepageUrl}
+              class="bg-white px-3 py-1 rounded-lg flex items-center gap-1 border"
+              target="_blank"
+            >
+              <span class="text-sm">Demo</span>
+              <img src="/icons/redirect.svg" class="w-4 h-4" alt="" />
+            </a>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </Layout>

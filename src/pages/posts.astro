@@ -1,20 +1,40 @@
 ---
-import { getCollection } from "astro:content"
-import Date from "../components/Date.astro"
-import Layout from "../layouts/Layout.astro"
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from "astro:content";
+import Date from "../components/Date.astro";
+import Layout from "../layouts/Layout.astro";
+
+type groupedPosts = {
+  [key: string]: CollectionEntry<'posts'>[]
+}
 
 const allPosts = await getCollection("posts")
+
+
+const groupedPostsByYear: groupedPosts =
+  allPosts
+    .reduce((groupedPosts: groupedPosts, post) => {
+      const pubDate = post.data.pubDate.getFullYear().toString()
+      groupedPosts[pubDate] = groupedPosts[pubDate] || []
+      groupedPosts[pubDate].push(post)
+      return groupedPosts
+    }, {})
 ---
 
 <Layout pageTitle="Blog">
-  <div class="not-prose">
-    {
-      allPosts.map((post) => (
-        <a href=`/posts/${post.slug}/` class="flex justify-between">
-          {post.data.title}
-          <Date date={post.data.pubDate} />
-        </a>
-      ))
-    }
+  <div>
+    {Object.keys(groupedPostsByYear).map((year) => (
+      <div class="my-8">
+        <h2 class="mb-4">{year}</h2>
+        <div>
+            {groupedPostsByYear[year].map((post: CollectionEntry<'posts'>) => (
+            <a href=`/posts/${post.slug}` class="py-1 flex items-center justify-between border-b border-stone-200 lg:text-lg font-semibold text-stone-600">
+              {post.data.title}
+              <Date date={post.data.pubDate} />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
   </div>
 </Layout>

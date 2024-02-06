@@ -8,7 +8,7 @@ const { date } = Astro.props
 
 <script></script>
 
-<time datetime={date.toISOString()}>
+<time datetime={date.toISOString()} class="font-code font-medium text-sm">
   {
     date.toLocaleDateString("en-us", {
       month: "short",

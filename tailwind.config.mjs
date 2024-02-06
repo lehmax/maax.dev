@@ -4,12 +4,6 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}"],
   theme: {
-    fontSize: {
-      ...defaultTheme.fontSize,
-      sm: ["1rem", "1.5rem"],
-      base: ["1.125rem", "1.625rem"],
-      "4xl": ["2rem", "2.875rem"],
-    },
     extend: {
       colors: {
         black: "#141520",
@@ -66,23 +60,34 @@ export default {
       fontFamily: {
         sans: ["Inter Variable", "Inter", ...defaultTheme.fontFamily.sans],
         title: ["Outfit Variable", ...defaultTheme.fontFamily.sans],
+        code: ["Fira Code Variable", ...defaultTheme.fontFamily.mono],
       },
     },
   },
   plugins: [
     require("@tailwindcss/typography"),
     function ({ addBase, theme }) {
+      const md = theme("screens.md", {})
+
       addBase({
         h1: {
-          fontWeight: "700",
-          fontSize: theme("fontSize.5xl"),
+          fontSize: theme("fontSize.4xl"),
+          fontWeight: "800",
+          [`@media (min-width: ${md})`]: {
+            fontSize: theme("fontSize.5xl"),
+          },
         },
         h2: {
-          fontSize: theme("fontSize.4xl"),
+          fontSize: theme("fontSize.3xl"),
           fontWeight: "700",
-          borderBottom: "2px solid " + theme("colors.slate.200"),
+          [`@media (min-width: ${md})`]: {
+            fontSize: theme("fontSize.4xl"),
+          },
         },
-        "main a": {
+        ".prose h2": {
+          borderBottom: "2px solid " + theme("colors.stone.200"),
+        },
+        ".prose a": {
           color: theme("colors.lila.900"),
           textDecoration: "underline",
           "text-DecorationThickness": "2px",

@@ -10,6 +10,6 @@ const { classList, title, link, icon } = Astro.props
 ---
 
 <a href={link} class={classList}>
-  {icon && <img src={icon} alt="" class="w-6 h-6 shrink" />}
-  {title && <span class="ml-2">{title}</span>}
+  {icon && <img src={icon} alt="" class="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />}
+  {title && <span class="ml-1 md:ml-2">{title}</span>}
 </a>

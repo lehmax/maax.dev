@@ -1,6 +1,6 @@
 ---
-title: "Mon premier article de blog"
-pubDate: 2022-07-01
+title: "Lorem ipsum dolor sit amet"
+pubDate: 2021-04-22
 description: "Il s'agit du premier article de mon nouveau blog Astro."
 tags: ["astro", "blogging", "apprentissage en public"]
 ---

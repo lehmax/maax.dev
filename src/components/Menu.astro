@@ -15,28 +15,33 @@ const SecondaryMenuItems = [
 ]
 ---
 
-<nav class="flex items-center justify-between">
-  <div class="flex gap-x-4">
+<nav
+  class="w-full bg-yellow-50 md:max-w-3xl md:mx-auto border-b border-slate-200 md:border-none flex gap-3 items-center justify-between fixed md:static top-0 py-4 px-4"
+>
+  <div class="flex gap-x-1 md:gap-x-3">
     {
       MenuItems.map(({ title, link, icon }) => (
         <Link
           title={title}
           link={link}
           icon={icon}
-          classList="text-sm flex border-black items-center justify-center overflow-hidden rounded border-2 border-neutral-900 px-4 py-1 [box-shadow:4px_4px_rgb(23_23_23)] active:translate-x-[3px] active:translate-y-[3px] active:[box-shadow:0px_0px_rgb(82_82_82)]"
+          classList="text-sm md:text-base flex md:border-black items-center justify-center rounded border md:border-2 border-neutral-900 px-2 md:px-4 py-1 md:[box-shadow:4px_4px_rgb(23_23_23)] md:active:translate-x-[3px] md:active:translate-y-[3px] md:active:[box-shadow:0px_0px_rgb(82_82_82)]"
         />
       ))
     }
   </div>
-  <div class="flex gap-x-4">
+  <div class="flex gap-x-3">
     {
-      SecondaryMenuItems.map(({ link, icon }) => (
-        <Link
-          link={link}
-          icon={icon}
-          classList="rounded-full border-lila-300 bg-lila-100 border-2  p-2"
-        />
-      ))
+      SecondaryMenuItems.map(({ link, icon }, index, { length }) => {
+        const visibility = index === length - 1 ? "flex" : "hidden md:flex"
+        return (
+          <Link
+            link={link}
+            icon={icon}
+            classList=`rounded-full border-lila-300 bg-lila-100 border-2 p-1 md:p-2 ${visibility}`
+          />
+        )
+      })
     }
   </div>
 </nav>
